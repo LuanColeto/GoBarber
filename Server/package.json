@@ -1,0 +1,29 @@
+{
+  "name": "node-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev:server": "ts-node-dev --transpileOnly --ignore-watch node_modules src/server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@types/express": "^4.17.6",
+    "expres": "^0.0.5",
+    "express": "^4.17.1",
+    "typescript": "^3.9.5"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^3.4.0",
+    "@typescript-eslint/parser": "^3.4.0",
+    "eslint": "6.8.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-import-resolver-typescript": "^2.0.0",
+    "eslint-plugin-import": "^@2.21.2\n",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.0.5",
+    "ts-node-dev": "^1.0.0-pre.49"
+  }
+}
