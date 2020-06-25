@@ -6,8 +6,6 @@ const app = express();
 app.use(express.json());
 app.use(routes);
 
-app.get('/', (request, response) => response.json({ message: 'It works' }));
-
 app.listen(3333, () => {
   console.log('Server is running');
 });
