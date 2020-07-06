@@ -15,18 +15,18 @@ import { Container, Content, Background } from './styles';
 const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
-  console.log(formRef);
-
   const handleSubmit = useCallback(async (data: object) => {
     try {
+      formRef.current?.setErrors({});
+
       const schema = Yup.object().shape({
         name: Yup.string().required('Nome obrigatóio'),
         email: Yup.string()
           .required('E-mail obrigatório')
-          .email('Insira um e-mail válido'),
+          .email('E-mail inválido'),
         password: Yup.string().min(
           6,
-          'Senha precisa de no mínimo de 6 caracteres',
+          'No mínimo 6 dígitos',
         ),
       });
 
