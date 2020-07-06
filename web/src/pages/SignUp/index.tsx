@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { useCallback, useRef } from 'react';
 import { FiArrowLeft, FiMail, FiLock, FiUser } from 'react-icons/fi';
+import { FormHandles } from '@unform/core';
+import { Form } from '@unform/web';
+import * as Yup from 'yup';
+import getValidationErrors from '../../utils/getValidationErrors';
 
 import Logo from '../../assets/logo.svg';
 
@@ -8,36 +12,65 @@ import Button from '../../components/button';
 
 import { Container, Content, Background } from './styles';
 
-const SignUp: React.FC = () => (
-  <Container>
-    <Background />
+const SignUp: React.FC = () => {
+  const formRef = useRef<FormHandles>(null);
 
-    <Content>
-      <img src={Logo} alt="GoBarber" />
+  console.log(formRef);
 
-      <form>
-        <h1>Faça seu Cadastro</h1>
+  const handleSubmit = useCallback(async (data: object) => {
+    try {
+      const schema = Yup.object().shape({
+        name: Yup.string().required('Nome obrigatóio'),
+        email: Yup.string()
+          .required('E-mail obrigatório')
+          .email('Insira um e-mail válido'),
+        password: Yup.string().min(
+          6,
+          'Senha precisa de no mínimo de 6 caracteres',
+        ),
+      });
 
-        <Input name="user" icon={FiUser} placeholder="Nome" />
+      await schema.validate(data, {
+        abortEarly: false,
+      });
+    } catch (err) {
+      const errors = getValidationErrors(err);
 
-        <Input name="email" icon={FiMail} placeholder="E-mail" />
+      formRef.current?.setErrors(errors);
+    }
+  }, []);
 
-        <Input
-          name="password"
-          icon={FiLock}
-          type="password"
-          placeholder="Senha"
-        />
+  return (
+    <Container>
+      <Background />
 
-        <Button type="submit">Cadastrar</Button>
-      </form>
+      <Content>
+        <img src={Logo} alt="GoBarber" />
 
-      <a href="/signup">
-        <FiArrowLeft />
-        Voltar para o login
-      </a>
-    </Content>
-  </Container>
-);
+        <Form ref={formRef} onSubmit={handleSubmit}>
+          <h1>Faça seu Cadastro</h1>
+
+          <Input name="name" icon={FiUser} placeholder="Nome" />
+
+          <Input name="email" icon={FiMail} placeholder="E-mail" />
+
+          <Input
+            name="password"
+            icon={FiLock}
+            type="password"
+            placeholder="Senha"
+          />
+
+          <Button type="submit">Cadastrar</Button>
+        </Form>
+
+        <a href="/signup">
+          <FiArrowLeft />
+          Voltar para o login
+        </a>
+      </Content>
+    </Container>
+  );
+};
 
 export default SignUp;
