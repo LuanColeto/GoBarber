@@ -24,13 +24,13 @@ class AuthenticateUserService {
     });
 
     if (!user) {
-      throw new AppError('E-mail or password are incorrect', 401);
+      throw new AppError('E-mail or password is incorrect', 401);
     }
 
     const passwordMatched = await compare(password, user.password);
 
     if (!passwordMatched) {
-      throw new AppError('E-mail or password are incorrect', 401);
+      throw new AppError('E-mail or password is incorrect', 401);
     }
 
     const { secret, expiresIn } = authConfig.jwt;
