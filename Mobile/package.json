@@ -1,0 +1,51 @@
+{
+  "name": "Mobile",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "react": "16.13.1",
+    "react-native": "0.63.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.5",
+    "@babel/runtime": "^7.10.5",
+    "@react-native-community/eslint-config": "^2.0.0",
+    "@types/jest": "^26.0.4",
+    "@types/react": "^16.9.43",
+    "@types/react-native": "^0.63.1",
+    "@types/react-test-renderer": "^16.9.2",
+    "babel-jest": "^26.1.0",
+    "eslint": "^7.4.0",
+    "jest": "^26.1.0",
+    "metro-react-native-babel-preset": "^0.60.0",
+    "react-native-typescript-transformer": "^1.2.13",
+    "react-test-renderer": "16.13.1",
+    "ts-jest": "^26.1.2",
+    "typescript": "^3.9.6"
+  },
+  "jest": {
+    "preset": "react-native",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(js)$": "<rootDir>/node_modules/babel-jest",
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "testPathIgnorePatterns": [
+      "\\.snap$",
+      "<rootDir>/node_modules/"
+    ],
+    "cacheDirectory": ".jest/cache"
+  }
+}
