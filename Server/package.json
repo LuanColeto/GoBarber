@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "dev:server": "ts-node-dev --transpileOnly --ignore-watch node_modules src/server.ts",
+    "dev:server": "ts-node-dev -r tsconfig-paths/register --transpileOnly --ignore-watch node_modules src/shared/infra/http/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
+    "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js"
   },
   "dependencies": {
     "@types/bcryptjs": "^2.4.2",
@@ -28,6 +28,7 @@
     "uuidv4": "^6.1.0"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.6",
     "@types/multer": "^1.4.3",
     "@types/uuidv4": "^5.0.0",
     "@typescript-eslint/eslint-plugin": "^3.4.0",
@@ -39,6 +40,7 @@
     "eslint-plugin-import": "^@2.21.2\n",
     "eslint-plugin-prettier": "^3.1.4",
     "prettier": "^2.0.5",
-    "ts-node-dev": "^1.0.0-pre.49"
+    "ts-node-dev": "^1.0.0-pre.49",
+    "tsconfig-paths": "^3.9.0"
   }
 }
