@@ -21,6 +21,8 @@
     "rules": {
         "prettier/prettier": "error",
         "class-methods-use-this": "off",
+        "@typescript-eslint/camelcase": "off",
+        "no-useless-constructor": "off",
         "camelcase": [0, {"properties": "never"}],
         "import/extensions": [
           "error",
