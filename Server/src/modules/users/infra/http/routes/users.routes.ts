@@ -3,7 +3,7 @@ import multer from 'multer';
 import uploadConfig from '@config/upload';
 
 import UsersController from '@modules/users/infra/http/controllers/UsersController';
-import UserAvatarController from '@modules/users/infra/http/routes/UserAvatarController';
+import UserAvatarController from '@modules/users/infra/http/controllers/UserAvatarController';
 
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 
