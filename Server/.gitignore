@@ -5,5 +5,7 @@ tep/
 .env
 coverage
 
+ormconfig.json
+
 tmp/*
 !tmp/.gitkeep
