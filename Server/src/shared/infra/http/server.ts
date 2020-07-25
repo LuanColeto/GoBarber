@@ -1,10 +1,13 @@
-import express, { NextFunction, Request, Response } from 'express';
 import 'reflect-metadata';
-import 'express-async-errors';
+
+import express, { NextFunction, Request, Response } from 'express';
 import cors from 'cors';
+import { errors } from 'celebrate';
+import 'express-async-errors';
+
 import '@shared/infra/typeorm';
-import uploadConfig from '@config/upload';
 import AppError from '@shared/errors/AppError';
+import uploadConfig from '@config/upload';
 import routes from './routes';
 
 import '@shared/container';
@@ -15,6 +18,8 @@ app.use(cors());
 app.use(express.json());
 app.use('/files', express.static(uploadConfig.tmpFolder));
 app.use(routes);
+
+app.use(errors());
 
 app.use(
   (err: Error, request: Request, response: Response, next: NextFunction) => {
