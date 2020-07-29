@@ -64,7 +64,7 @@ describe('UpdateProfile', () => {
       password: '123456',
     });
 
-    const updatedUser = await updateProfile.execute({
+    await updateProfile.execute({
       user_id: user.id,
       name: 'Luan Coleto',
       email: 'luancoleto@outlook.com',
@@ -72,7 +72,7 @@ describe('UpdateProfile', () => {
       password: '2482',
     });
 
-    expect(updatedUser.password).toBe('2482');
+    expect(user.password).toBe('2482');
   });
 
   it('should not be able to update the password without old password', async () => {
