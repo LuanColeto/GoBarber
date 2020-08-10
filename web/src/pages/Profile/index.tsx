@@ -32,6 +32,7 @@ const Profile: React.FC = () => {
 
   const { user, updateUser } = useAuth()
 
+
   const handleSubmit = useCallback(async (data: ProfileData) => {
     try {
       formRef.current?.setErrors({});
